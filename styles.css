@@ -1,7 +1,6 @@
 body{
     padding: 20px;
 }
-
 #topBar{
     display: flex;
     flex-direction: row;
@@ -11,26 +10,53 @@ body{
     color: rgb(251, 0, 255);
 }
 
+#highScoreButton:hover{
+    cursor: pointer;
+}
+
 #mainScreen{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-
 #mainScreen p{
     font-size: large;
     width: 50%;
 }
-
 #startQuizButton{
     background-color: purple;
     padding: 10px 30px;
     border-radius: 10px;
     color: white;
 }
-
 #startQuizButton:hover{
+    cursor: pointer;
+    background-color: rgb(238, 126, 238);
+}
+#questionsScreen{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#question{
+    font-size: 2.5rem;
+    width: 45%;
+}
+#optionWrapper{
+    width: 45%;
+}
+
+#optionWrapper .option{
+    width: 150px;
+    padding: 10px;
+    margin: 7px;
+    border-radius: 10px;
+    color: white;
+    background-color: purple;
+}
+
+#optionWrapper .option:hover{
     cursor: pointer;
     background-color: rgb(238, 126, 238);
 }
