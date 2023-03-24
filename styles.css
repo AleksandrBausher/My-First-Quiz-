@@ -1,62 +1,106 @@
-body{
+body {
     padding: 20px;
-}
-#topBar{
+  }
+  
+  #topBar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-}
-#highScoreButton{
+  }
+  #highScoreButton {
     color: rgb(251, 0, 255);
-}
-
-#highScoreButton:hover{
+  }
+  
+  #highScoreButton:hover {
     cursor: pointer;
-}
-
-#mainScreen{
-    display: flex;
+  }
+  
+  #mainScreen {
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-#mainScreen p{
+  }
+  
+  #mainScreen p {
     font-size: large;
     width: 50%;
-}
-#startQuizButton{
+  }
+  
+  #startQuizButton {
     background-color: purple;
     padding: 10px 30px;
     border-radius: 10px;
     color: white;
-}
-#startQuizButton:hover{
+  }
+  
+  #startQuizButton:hover {
     cursor: pointer;
     background-color: rgb(238, 126, 238);
-}
-#questionsScreen{
-    display: flex;
+  }
+  #questionsScreen {
+    display: none;
     flex-direction: column;
     align-items: center;
-}
-#question{
+  }
+  #question {
     font-size: 2.5rem;
     width: 45%;
-}
-#optionWrapper{
+  }
+  #optionWrapper {
     width: 45%;
-}
-
-#optionWrapper .option{
+  }
+  
+  #optionWrapper .option {
     width: 150px;
     padding: 10px;
     margin: 7px;
     border-radius: 10px;
     color: white;
     background-color: purple;
-}
-
-#optionWrapper .option:hover{
+  }
+  
+  #optionWrapper .option:hover {
     cursor: pointer;
     background-color: rgb(238, 126, 238);
-}
+  }
+  
+  #quizFinishedScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #quizFinishedScreen h1 {
+    width: 45%;
+  }
+  
+  #quizFinalScore {
+    width: 45%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  #initialsContainer {
+    width: 45%;
+    display: flex;
+    flex-direction: row;
+    height: 25px;
+    align-items: center;
+  }
+  
+  #userInitials {
+    height: 17px;
+    width: 15rem;
+    margin: 10px 15px;
+  }
+  #initialsSubmitButton {
+    padding: 4px 20px;
+    background-color: purple;
+    border-radius: 10px;
+    color: white;
+  }
+  
+  #highScoresScreen {
+    display: none;
+  }
