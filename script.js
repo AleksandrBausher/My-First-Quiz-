@@ -5,7 +5,6 @@ let quizFinishedScreen = document.getElementById("quizFinishedScreen");
 let highScoresScreen = document.getElementById("highScoresScreen");
 let topBar = document.getElementById("topBar");
 let optionWrapper = document.getElementById("optionWrapper");
-
 //Buttons
 let startQuizButton = document.getElementById("startQuizButton");
 let highScoreButton = document.getElementById("highScoreButton");
@@ -92,17 +91,25 @@ function getAnswer(event) {
 }
 
 function gethighScoresScreen() {
+
+    
+          
+            
+    
+
+          
+    
+    
+  
   mainScreen.style.display = "none";
   quizFinishedScreen.style.display = "none";
   questionsScreen.style.display = "none";
   topBar.style.display = "none";
   highScoresScreen.style.display = "flex";
 }
-
 function reload() {
   location.reload();
 }
-
 startQuizButton.addEventListener("click", getQuestionsScreen);
 initialsSubmitButton.addEventListener("click", gethighScoresScreen);
 highScoreButton.addEventListener("click", gethighScoresScreen);
