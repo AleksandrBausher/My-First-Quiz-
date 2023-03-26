@@ -5,6 +5,7 @@ let quizFinishedScreen = document.getElementById("quizFinishedScreen");
 let highScoresScreen = document.getElementById("highScoresScreen");
 let topBar = document.getElementById("topBar");
 let optionWrapper = document.getElementById("optionWrapper");
+
 //Buttons
 let startQuizButton = document.getElementById("startQuizButton");
 let highScoreButton = document.getElementById("highScoreButton");
@@ -20,6 +21,9 @@ let option4 = document.getElementById("option4");
 
 //Elements
 let question = document.getElementById("question");
+let timerElement = document.getElementById("timer");
+let line = document.getElementById("line");
+let checker = document.getElementById("checker");
 
 let questionsList = [
   {
@@ -58,18 +62,49 @@ let questionsList = [
   },
 ];
 
+//variables
+var timer;
+var start = 60;
+var score = 0;
+
+
 function getQuestionsScreen() {
+  startTimer();
   mainScreen.style.display = "none";
   questionsScreen.style.display = "flex";
 }
+
+function startTimer(){
+  function maketimerWork(){
+  var end = 0;
+    start--;
+    timerElement.textContent = start.toString();
+  
+  if (start <= end) {
+    window.clearInterval(theTimer);
+
+    gethighScoresScreen();
+  }
+  }
+
+    theTimer = window.setInterval(maketimerWork, 1000);
+    console.log("timer starts");
+
+
+}
+
+
 var i = 1;
 function getAnswer(event) {
+  line.className="";
   var userSelection = event.target.textContent;
-
   if (questionsList[i - 1].options.includes(userSelection)) {
-    var isCorrect = false;
+    line.className = "line"
     if (userSelection == questionsList[i - 1].answer) {
-      isCorrect = true;
+      checker.textContent="Correct"
+    }else{
+      start=start-5;
+      checker.textContent="Wrong"
     }
     if (i < questionsList.length) {
       optionWrapper.innerHTML = "";
@@ -82,34 +117,27 @@ function getAnswer(event) {
       });
 
       i++;
-      console.log(userSelection);
     }
 
+    questionsScreen.appendChild(line)
+    questionsScreen.appendChild(checker)
 
 
   }
 }
 
 function gethighScoresScreen() {
-
-    
-          
-            
-    
-
-          
-    
-    
-  
   mainScreen.style.display = "none";
   quizFinishedScreen.style.display = "none";
   questionsScreen.style.display = "none";
   topBar.style.display = "none";
   highScoresScreen.style.display = "flex";
 }
+
 function reload() {
   location.reload();
 }
+
 startQuizButton.addEventListener("click", getQuestionsScreen);
 initialsSubmitButton.addEventListener("click", gethighScoresScreen);
 highScoreButton.addEventListener("click", gethighScoresScreen);

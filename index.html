@@ -10,7 +10,7 @@
   <body>
     <div id="topBar">
       <p id="highScoreButton">View high Scores</p>
-      <p id="timer">Timer</p>
+      <p>Timer: <span id="timer"></span></p>
     </div>
     <div id="mainScreen">
       <h1>Coding quiz challenge</h1>
@@ -19,6 +19,7 @@
         mind that incorrect answers will penalize your score/time by ten
         seconds!
       </p>
+
       <div id="startQuizButton">Start Quiz</div>
     </div>
     <div id="questionsScreen">
@@ -29,8 +30,10 @@
         <div id="option3" class="option">navigator.print();</div>
         <div id="option4" class="option">document.print();</div>
       </div>
+      <div id="line"></div>
+      <div id="checker"></div>
     </div>
-  
+
     <div id="quizFinishedScreen">
         <h1>All Done!</h1>
         <p id="quizFinalScore">Your final score is</p>
@@ -40,6 +43,8 @@
             <div id="initialsSubmitButton">Submit</div>
         </div>
     </div>
+
+
     <div id="highScoresScreen">
         <h1>High Scores</h1>
         <div id="highScoresContainer">

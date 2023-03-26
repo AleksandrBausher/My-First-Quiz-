@@ -155,3 +155,15 @@ body {
     cursor: pointer;
     background-color: rgb(238, 126, 238);
   }
+  
+  .line{
+    margin-top: 30px;
+    width: 50%;
+    border: 1px solid rgba(128, 128, 128, 0.446);
+  }
+  
+  #checker{
+    color: rgba(128, 128, 128, 0.598);
+    font-style: italic;
+    font-size: larger;
+  }
