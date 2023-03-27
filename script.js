@@ -67,44 +67,40 @@ var timer;
 var start = 60;
 var score = 0;
 
-
 function getQuestionsScreen() {
   startTimer();
   mainScreen.style.display = "none";
   questionsScreen.style.display = "flex";
 }
 
-function startTimer(){
-  function maketimerWork(){
-  var end = 0;
+function startTimer() {
+  function maketimerWork() {
+    var end = 0;
     start--;
     timerElement.textContent = start.toString();
-  
-  if (start <= end) {
-    window.clearInterval(theTimer);
 
-    gethighScoresScreen();
+    if (start <= end) {
+      window.clearInterval(theTimer);
+
+      getQuizFinishedScreen();
+    }
   }
-  }
 
-    theTimer = window.setInterval(maketimerWork, 1000);
-    console.log("timer starts");
-
-
+  theTimer = window.setInterval(maketimerWork, 1000);
+  console.log("timer starts");
 }
-
 
 var i = 1;
 function getAnswer(event) {
-  line.className="";
+  line.className = "";
   var userSelection = event.target.textContent;
   if (questionsList[i - 1].options.includes(userSelection)) {
-    line.className = "line"
+    line.className = "line";
     if (userSelection == questionsList[i - 1].answer) {
-      checker.textContent="Correct"
-    }else{
-      start=start-5;
-      checker.textContent="Wrong"
+      checker.textContent = "Correct";
+    } else {
+      start = start - 5;
+      checker.textContent = "Wrong";
     }
     if (i < questionsList.length) {
       optionWrapper.innerHTML = "";
@@ -117,21 +113,33 @@ function getAnswer(event) {
       });
 
       i++;
+      questionsScreen.appendChild(line);
+      questionsScreen.appendChild(checker);
     }
 
-    questionsScreen.appendChild(line)
-    questionsScreen.appendChild(checker)
-
-
+    if (i == questionsList.length) {
+      getQuizFinishedScreen()
+      quizFinishedScreen.appendChild(line)
+      quizFinishedScreen.appendChild(checker)
+    }
   }
 }
 
-function gethighScoresScreen() {
+function getHighScoresScreen() {
   mainScreen.style.display = "none";
   quizFinishedScreen.style.display = "none";
   questionsScreen.style.display = "none";
   topBar.style.display = "none";
   highScoresScreen.style.display = "flex";
+
+}
+
+function getQuizFinishedScreen() {
+  mainScreen.style.display = "none";
+  quizFinishedScreen.style.display = "flex";
+  questionsScreen.style.display = "none";
+  topBar.style.display = "none";
+  highScoresScreen.style.display = "none";
 }
 
 function reload() {
@@ -139,7 +147,7 @@ function reload() {
 }
 
 startQuizButton.addEventListener("click", getQuestionsScreen);
-initialsSubmitButton.addEventListener("click", gethighScoresScreen);
-highScoreButton.addEventListener("click", gethighScoresScreen);
+initialsSubmitButton.addEventListener("click", getHighScoresScreen);
+highScoreButton.addEventListener("click", getHighScoresScreen);
 goBackButton.addEventListener("click", reload);
 optionWrapper.addEventListener("click", getAnswer);
