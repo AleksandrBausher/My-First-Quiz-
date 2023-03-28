@@ -5,6 +5,7 @@ let quizFinishedScreen = document.getElementById("quizFinishedScreen");
 let highScoresScreen = document.getElementById("highScoresScreen");
 let topBar = document.getElementById("topBar");
 let optionWrapper = document.getElementById("optionWrapper");
+let highScoresContainer = document.getElementById("highScoresContainer");
 
 //Buttons
 let startQuizButton = document.getElementById("startQuizButton");
@@ -129,7 +130,7 @@ function getAnswer(event) {
 
 function getHighScoresScreen() {
   localStorage.setItem(userInitials.value, start.toString());
-
+  showHighScoreOnScreen();
   mainScreen.style.display = "none";
   quizFinishedScreen.style.display = "none";
   questionsScreen.style.display = "none";
@@ -137,8 +138,20 @@ function getHighScoresScreen() {
   highScoresScreen.style.display = "flex";
 }
 
-function showHighScoreOnScreen(){
-  
+function showHighScoreOnScreen() {
+  highScoresContainer.innerHTML = "";
+  for (var i = 0; i < localStorage.length; i++) {
+    var highScore = document.createElement("div");
+    highScore.className = "highScore";
+    var index = i + 1;
+    highScore.textContent =
+      index +
+      ". " +
+      localStorage.key(i) +
+      ": " +
+      localStorage.getItem(localStorage.key(i));
+    highScoresContainer.appendChild(highScore);
+  }
 }
 
 function getQuizFinishedScreen() {
@@ -156,8 +169,9 @@ function reload() {
   location.reload();
 }
 
-function clearHighScore(){
+function clearHighScore() {
   localStorage.clear();
+  showHighScoreOnScreen();
 }
 
 startQuizButton.addEventListener("click", getQuestionsScreen);
@@ -165,4 +179,4 @@ initialsSubmitButton.addEventListener("click", getHighScoresScreen);
 highScoreButton.addEventListener("click", getHighScoresScreen);
 goBackButton.addEventListener("click", reload);
 optionWrapper.addEventListener("click", getAnswer);
-clearHighScoreButton.addEventListener('click', clearHighScore)
+clearHighScoreButton.addEventListener("click", clearHighScore);
