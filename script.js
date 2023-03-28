@@ -24,6 +24,8 @@ let question = document.getElementById("question");
 let timerElement = document.getElementById("timer");
 let line = document.getElementById("line");
 let checker = document.getElementById("checker");
+let quizFinalScore = document.getElementById("quizFinalScore");
+let userInitials = document.getElementById("userInitials");
 
 let questionsList = [
   {
@@ -80,13 +82,13 @@ function startTimer() {
     timerElement.textContent = start.toString();
 
     if (start <= end) {
-      window.clearInterval(theTimer);
+      window.clearInterval(timer);
 
       getQuizFinishedScreen();
     }
   }
 
-  theTimer = window.setInterval(maketimerWork, 1000);
+  timer = window.setInterval(maketimerWork, 1000);
   console.log("timer starts");
 }
 
@@ -118,20 +120,25 @@ function getAnswer(event) {
     }
 
     if (i == questionsList.length) {
-      getQuizFinishedScreen()
-      quizFinishedScreen.appendChild(line)
-      quizFinishedScreen.appendChild(checker)
+      getQuizFinishedScreen();
+      quizFinishedScreen.appendChild(line);
+      quizFinishedScreen.appendChild(checker);
     }
   }
 }
 
 function getHighScoresScreen() {
+  localStorage.setItem(userInitials.value, start.toString());
+
   mainScreen.style.display = "none";
   quizFinishedScreen.style.display = "none";
   questionsScreen.style.display = "none";
   topBar.style.display = "none";
   highScoresScreen.style.display = "flex";
+}
 
+function showHighScoreOnScreen(){
+  
 }
 
 function getQuizFinishedScreen() {
@@ -140,10 +147,17 @@ function getQuizFinishedScreen() {
   questionsScreen.style.display = "none";
   topBar.style.display = "none";
   highScoresScreen.style.display = "none";
+
+  window.clearInterval(timer);
+  quizFinalScore.textContent += ": " + start;
 }
 
 function reload() {
   location.reload();
+}
+
+function clearHighScore(){
+  localStorage.clear();
 }
 
 startQuizButton.addEventListener("click", getQuestionsScreen);
@@ -151,3 +165,4 @@ initialsSubmitButton.addEventListener("click", getHighScoresScreen);
 highScoreButton.addEventListener("click", getHighScoresScreen);
 goBackButton.addEventListener("click", reload);
 optionWrapper.addEventListener("click", getAnswer);
+clearHighScoreButton.addEventListener('click', clearHighScore)
