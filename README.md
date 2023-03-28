@@ -28,8 +28,12 @@ Click here to access my [My First Quiz](https://aleksandrbausher.github.io/My-Fi
 To know more about me and my projects
 
 ## Screenshot
-
-
+![First Screen](./images/screenshot1.png "screen1")
+![Second Screen](./images/screenshot2.png "screen2")
+![Third Screen](./images/screenshot3.png "screen3")
+![Fourth Screen](./images/screenshot4.png "screen4")
+![Fifth Screen](./images/screenshot5.png "screen5")
+![Six Screen](./images/screenshot6.png "screen6")
 
 ## Contribution
 
